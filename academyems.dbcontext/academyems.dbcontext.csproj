@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\academyems.data\academyems.data.csproj" />
-    <ProjectReference Include="..\academyems.repositories\academyems.repositories.csproj" />
   </ItemGroup>
 
 </Project>

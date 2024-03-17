@@ -1,0 +1,136 @@
+table name
+
+1. user_type
+2. course_type
+3. course
+4. user_detail
+5. batch_location
+6. batch_status
+7. batch
+8. payment_type
+9. payment_status
+10. address
+11. batch_enrollment
+12. payment
+
+table structure
+
+1. user_type
+	id number,
+	type_name varchar,
+	created_date,
+	modified_date,
+	created_by int,
+	modified_by int
+	
+2. 	course_type
+	id number,
+	type_name varchar,
+	description varchar,
+	created_date,
+	modified_date,
+	created_by int,
+	modified_by int
+	
+3. payment_type
+	id number,
+	type_name varchar,
+	description varchar,
+	created_date,
+	modified_date,
+	created_by int,
+	modified_by int	
+
+
+4. payment_status
+	id number,
+	status_name varchar,
+	description varchar,
+	created_date,
+	modified_date,
+	created_by int,
+	modified_by int	
+	
+5. address	
+	id number,
+	address_line1 varchar,
+	address_line2 varchar,
+	city varchar,
+	state varchar,
+	pincode number,
+	created_date,
+	modified_date,
+	created_by int,
+	modified_by int	
+	
+6. course	
+	id number,
+	course_type fk int course_type,
+	course_name varchar,
+	course_description varchar,
+	duration int, - in hours
+	created_date,
+	modified_date,
+	created_by int,
+	modified_by int	
+	
+7. user_detail	
+	id number,
+	first_name varchar,
+	last_name varchar,
+	gender varchar,
+	dob datetime,
+	identity_id varchar,
+	identity_type varchar,
+	address_id fk int address,
+	hashed_password varchar,
+	created_date,
+	modified_date,
+	created_by int,
+	modified_by int
+	
+8. batch_status
+	id number,
+	status_name varchar,
+	description varchar,
+	created_date,
+	modified_date,
+	created_by int,
+	modified_by int
+
+10. batch	
+	id number,
+	course_id fk int course,
+	instructor_id fk int user,
+	address_id fk int user,
+	duration 
+	batch_date date,
+	batch_time datetime,
+	capacity int,
+	fees double,
+	created_date,
+	modified_date,
+	created_by int,
+	modified_by int	
+	
+11. batch_enrollment		
+	id number,
+	batch_id fk int batch,
+	student_id fk int user,
+	payment_id fk int payment,
+	enrollment_date date,
+	created_date,
+	modified_date,
+	created_by int,
+	modified_by int	
+	
+12. payment		
+	id number,
+	batch_enrollment_id fk int batch_enrollment,	
+	payment_status_id fk int payment_status,
+	payment_difference double,
+	created_date,
+	modified_date,
+	created_by int,
+	modified_by int	
+	

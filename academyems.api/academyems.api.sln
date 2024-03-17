@@ -5,7 +5,13 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "academyems.api", "academyems.api.csproj", "{D32109FD-7511-4BD9-AD88-2DECA391B4B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "academyems.services", "..\academyems.services\academyems.services.csproj", "{3092D729-6D3C-43C4-9007-93FF06BC251B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "academyems.services", "..\academyems.services\academyems.services.csproj", "{3092D729-6D3C-43C4-9007-93FF06BC251B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "academyems.repositories", "..\academyems.repositories\academyems.repositories.csproj", "{1A1AA2E8-8D93-4D8E-8E15-4357970716DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "academyems.data", "..\academyems.data\academyems.data.csproj", "{1B52EA68-0744-4276-B99D-D6513E87062D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "academyems.dbcontext", "..\academyems.dbcontext\academyems.dbcontext.csproj", "{581F8F0F-85C9-4683-B1A7-1E8D691852C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{3092D729-6D3C-43C4-9007-93FF06BC251B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3092D729-6D3C-43C4-9007-93FF06BC251B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3092D729-6D3C-43C4-9007-93FF06BC251B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A1AA2E8-8D93-4D8E-8E15-4357970716DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A1AA2E8-8D93-4D8E-8E15-4357970716DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A1AA2E8-8D93-4D8E-8E15-4357970716DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A1AA2E8-8D93-4D8E-8E15-4357970716DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B52EA68-0744-4276-B99D-D6513E87062D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B52EA68-0744-4276-B99D-D6513E87062D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B52EA68-0744-4276-B99D-D6513E87062D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B52EA68-0744-4276-B99D-D6513E87062D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{581F8F0F-85C9-4683-B1A7-1E8D691852C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{581F8F0F-85C9-4683-B1A7-1E8D691852C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{581F8F0F-85C9-4683-B1A7-1E8D691852C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{581F8F0F-85C9-4683-B1A7-1E8D691852C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
