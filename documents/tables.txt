@@ -15,7 +15,7 @@ table name
 
 table structure
 
-1. user_type
+1. user_type (trainer,student,staff)
 	id number,
 	type_name varchar,
 	created_date,
@@ -23,7 +23,7 @@ table structure
 	created_by int,
 	modified_by int
 	
-2. 	course_type
+2. 	course_type (basic,advance,trauma)
 	id number,
 	type_name varchar,
 	description varchar,
@@ -32,7 +32,7 @@ table structure
 	created_by int,
 	modified_by int
 	
-3. payment_type
+3. payment_type (cash,card,upi,online)
 	id number,
 	type_name varchar,
 	description varchar,
@@ -42,7 +42,7 @@ table structure
 	modified_by int	
 
 
-4. payment_status
+4. payment_status (fully paid, partially paid, not paid)
 	id number,
 	status_name varchar,
 	description varchar,
@@ -63,12 +63,20 @@ table structure
 	created_by int,
 	modified_by int	
 	
+5.1 Country
+	 CountryId Int Primary Key,  
+	 County Varchar(30)  
+	 
+5.2 countryState  
+	 StateId Int Primary Key,  
+     CountryId Int Foreign Key References Country(CountryId),  
+     State Varchar(30) 
+	
 6. course	
 	id number,
 	course_type fk int course_type,
 	course_name varchar,
 	course_description varchar,
-	duration int, - in hours
 	created_date,
 	modified_date,
 	created_by int,
@@ -89,7 +97,7 @@ table structure
 	created_by int,
 	modified_by int
 	
-8. batch_status
+8. batch_status (upcoming, ongoing, completed)
 	id number,
 	status_name varchar,
 	description varchar,
@@ -103,8 +111,9 @@ table structure
 	course_id fk int course,
 	instructor_id fk int user,
 	address_id fk int user,
-	duration 
-	batch_date date,
+	duration int, - in hours
+	batch_start_date date,
+	batch_end_date date,
 	batch_time datetime,
 	capacity int,
 	fees double,

@@ -22,6 +22,118 @@ namespace academyems.dbcontext.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("academyems.dbcontext.Entities.Address", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AddressLine1")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("address_line1");
+
+                    b.Property<string>("AddressLine2")
+                        .HasColumnType("text")
+                        .HasColumnName("address_line2");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("city");
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("integer")
+                        .HasColumnName("country_id");
+
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("PinCode")
+                        .HasColumnType("integer")
+                        .HasColumnName("pincode");
+
+                    b.Property<int>("StateId")
+                        .HasColumnType("integer")
+                        .HasColumnName("state_id");
+
+                    b.Property<int>("UpdatedBy")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UpdatedOn")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.HasIndex("StateId");
+
+                    b.ToTable("address");
+                });
+
+            modelBuilder.Entity("academyems.dbcontext.Entities.Country", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CountyName")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("country_name");
+
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("UpdatedBy")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UpdatedOn")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("country");
+                });
+
+            modelBuilder.Entity("academyems.dbcontext.Entities.CountryState", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("integer")
+                        .HasColumnName("country_id");
+
+                    b.Property<string>("StateName")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("state_name");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("country_state");
+                });
+
             modelBuilder.Entity("academyems.dbcontext.Entities.CourseType", b =>
                 {
                     b.Property<int>("Id")
@@ -160,6 +272,36 @@ namespace academyems.dbcontext.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("user_type");
+                });
+
+            modelBuilder.Entity("academyems.dbcontext.Entities.Address", b =>
+                {
+                    b.HasOne("academyems.dbcontext.Entities.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("academyems.dbcontext.Entities.CountryState", "CountryState")
+                        .WithMany()
+                        .HasForeignKey("StateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Country");
+
+                    b.Navigation("CountryState");
+                });
+
+            modelBuilder.Entity("academyems.dbcontext.Entities.CountryState", b =>
+                {
+                    b.HasOne("academyems.dbcontext.Entities.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Country");
                 });
 #pragma warning restore 612, 618
         }

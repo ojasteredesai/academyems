@@ -1,0 +1,19 @@
+1. login
+	userid
+	password
+	submit button
+	forgot password
+	enroll button
+2. enrollment page -> Student/Trainer/Staff
+	
+	course selection 
+	batch selection
+	
+	batch details with remaining capacity will be displayed.
+	user details to be entered.
+	
+	confirm button -> confirmation page -> payment -> enrolled.
+
+3. Create batch page -> staff/Trainer
+
+4. Create course page -> Staff/Trainer
