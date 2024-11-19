@@ -1,17 +1,16 @@
 table name
 
 1. user_type
-2. course_type
-3. course
-4. user_detail
-5. batch_location
-6. batch_status
-7. batch
+2. user_detail
+3. course_type
+4. course
+5. batch
+6. batch_details
+7. batch_status
 8. payment_type
 9. payment_status
 10. address
-11. batch_enrollment
-12. payment
+11. payment
 
 table structure
 
@@ -23,66 +22,7 @@ table structure
 	created_by int,
 	modified_by int
 	
-2. 	course_type (basic,advance,trauma)
-	id number,
-	type_name varchar,
-	description varchar,
-	created_date,
-	modified_date,
-	created_by int,
-	modified_by int
-	
-3. payment_type (cash,card,upi,online)
-	id number,
-	type_name varchar,
-	description varchar,
-	created_date,
-	modified_date,
-	created_by int,
-	modified_by int	
-
-
-4. payment_status (fully paid, partially paid, not paid)
-	id number,
-	status_name varchar,
-	description varchar,
-	created_date,
-	modified_date,
-	created_by int,
-	modified_by int	
-	
-5. address	
-	id number,
-	address_line1 varchar,
-	address_line2 varchar,
-	city varchar,
-	state varchar,
-	pincode number,
-	created_date,
-	modified_date,
-	created_by int,
-	modified_by int	
-	
-5.1 Country
-	 CountryId Int Primary Key,  
-	 County Varchar(30)  
-	 
-5.2 countryState  
-	 StateId Int Primary Key,  
-     CountryId Int Foreign Key References Country(CountryId),  
-     State Varchar(30) 
-	
-6. course	
-	id number,
-	course_type fk int course_type,
-	course_name varchar,
-	course_description varchar,
-	created_date,
-	modified_date,
-	created_by int,
-	modified_by int	
-	
-7. user_detail	
+2. user_detail	
 	id number,
 	first_name varchar,
 	last_name varchar,
@@ -96,17 +36,27 @@ table structure
 	modified_date,
 	created_by int,
 	modified_by int
-	
-8. batch_status (upcoming, ongoing, completed)
+
+3. course_type (basic,advance,trauma)
 	id number,
-	status_name varchar,
+	type_name varchar,
 	description varchar,
 	created_date,
 	modified_date,
 	created_by int,
-	modified_by int
-
-10. batch	
+	modified_by int	
+	
+4. course	
+	id number,
+	course_type fk int course_type,
+	course_name varchar,
+	course_description varchar,
+	created_date,
+	modified_date,
+	created_by int,
+	modified_by int		
+	
+5. batch	
 	id number,
 	course_id fk int course,
 	instructor_id fk int user,
@@ -120,9 +70,9 @@ table structure
 	created_date,
 	modified_date,
 	created_by int,
-	modified_by int	
-	
-11. batch_enrollment		
+	modified_by int
+
+6. batch_details		
 	id number,
 	batch_id fk int batch,
 	student_id fk int user,
@@ -133,7 +83,47 @@ table structure
 	created_by int,
 	modified_by int	
 	
-12. payment		
+7. batch_status (upcoming, ongoing, completed)
+	id number,
+	status_name varchar,
+	description varchar,
+	created_date,
+	modified_date,
+	created_by int,
+	modified_by int	
+
+8. payment_type (cash,card,upi,online)
+	id number,
+	type_name varchar,
+	description varchar,
+	created_date,
+	modified_date,
+	created_by int,
+	modified_by int	
+
+
+9. payment_status (fully paid, partially paid, not paid)
+	id number,
+	status_name varchar,
+	description varchar,
+	created_date,
+	modified_date,
+	created_by int,
+	modified_by int	
+	
+10. address	
+	id number,
+	address_line1 varchar,
+	address_line2 varchar,
+	city varchar,
+	state_id int,
+	pincode number,
+	created_date,
+	modified_date,
+	created_by int,
+	modified_by int		
+
+11. payment		
 	id number,
 	batch_enrollment_id fk int batch_enrollment,	
 	payment_status_id fk int payment_status,
@@ -141,5 +131,4 @@ table structure
 	created_date,
 	modified_date,
 	created_by int,
-	modified_by int	
-	
+	modified_by int		
