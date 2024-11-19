@@ -19,17 +19,6 @@ namespace academyems.dbcontext.Entities
         [Column("city")]
         public string City { get; set; }
 
-        [ForeignKey("Country")]
-        [Column("country_id")]
-        public int CountryId { get; set; }
-        public virtual Country Country { get; set; }
-
-        [ForeignKey("CountryState")]
-        [Column("state_id")]
-        public int StateId { get; set; }
-
-        public virtual CountryState CountryState { get; set; }
-
         [Column("pincode")]
         public int PinCode { get; set; }
     }

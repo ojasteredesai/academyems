@@ -14,8 +14,6 @@ namespace academyems.dbcontext
         public DbSet<CourseType> CourseType { get; set; }
         public DbSet<PaymentStatus> PaymentStatus { get; set; }
         public DbSet<PaymentType> PaymentType { get; set; }
-        public DbSet<Country> Country { get; set; }
-        public DbSet<CountryState> CountryState { get; set; }
         public DbSet<Address> Address { get; set; }
     }
 }
