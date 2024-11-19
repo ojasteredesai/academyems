@@ -16,5 +16,8 @@ namespace academyems.dbcontext
         public DbSet<PaymentType> PaymentType { get; set; }
         public DbSet<Address> Address { get; set; }
         public DbSet<UserDetail> UserDetail { get; set; }
+        public DbSet<Course> Course { get; set; }
+        public DbSet<Batch> Batch { get; set; }
+        public DbSet<BatchDetail> BatchDetail { get; set; }
     }
 }

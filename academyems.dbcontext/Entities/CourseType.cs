@@ -20,5 +20,8 @@ namespace academyems.dbcontext.Entities
 
         [Column("description")]
         public string? Description { get; set; }
+
+        // Navigation property for the dependent entity
+        public ICollection<Course> Courses { get; set; }
     }
 }

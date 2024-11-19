@@ -12,7 +12,7 @@ using academyems.dbcontext;
 namespace academyems.dbcontext.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241119150752_academyems")]
+    [Migration("20241119164114_academyems")]
     partial class academyems
     {
         /// <inheritdoc />
@@ -67,6 +67,154 @@ namespace academyems.dbcontext.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("address");
+                });
+
+            modelBuilder.Entity("academyems.dbcontext.Entities.Batch", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AddressId")
+                        .HasColumnType("integer")
+                        .HasColumnName("address_id");
+
+                    b.Property<int>("Capacity")
+                        .HasColumnType("integer")
+                        .HasColumnName("capacity");
+
+                    b.Property<int>("CourseId")
+                        .HasColumnType("integer")
+                        .HasColumnName("course_id");
+
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text")
+                        .HasColumnName("description");
+
+                    b.Property<int>("Duration")
+                        .HasColumnType("integer")
+                        .HasColumnName("duration");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("end_date");
+
+                    b.Property<double>("Fees")
+                        .HasColumnType("double precision")
+                        .HasColumnName("fees");
+
+                    b.Property<int>("InstructorId")
+                        .HasColumnType("integer")
+                        .HasColumnName("instructor_id");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("start_date");
+
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("time");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("type");
+
+                    b.Property<int>("UpdatedBy")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UpdatedOn")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AddressId");
+
+                    b.HasIndex("CourseId");
+
+                    b.HasIndex("InstructorId");
+
+                    b.ToTable("batch");
+                });
+
+            modelBuilder.Entity("academyems.dbcontext.Entities.BatchDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BatchId")
+                        .HasColumnType("integer")
+                        .HasColumnName("batch_id");
+
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("EnrollmentDate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("enrollment_date");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("integer")
+                        .HasColumnName("student_id");
+
+                    b.Property<int>("UpdatedBy")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UpdatedOn")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BatchId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("batch_detail");
+                });
+
+            modelBuilder.Entity("academyems.dbcontext.Entities.Course", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CourseDescription")
+                        .HasColumnType("text")
+                        .HasColumnName("course_description");
+
+                    b.Property<string>("CourseName")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("course_name");
+
+                    b.Property<int>("CourseTypeId")
+                        .HasColumnType("integer")
+                        .HasColumnName("course_typeid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseTypeId");
+
+                    b.ToTable("course");
                 });
 
             modelBuilder.Entity("academyems.dbcontext.Entities.CourseType", b =>
@@ -281,6 +429,88 @@ namespace academyems.dbcontext.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("user_type");
+                });
+
+            modelBuilder.Entity("academyems.dbcontext.Entities.Batch", b =>
+                {
+                    b.HasOne("academyems.dbcontext.Entities.Address", "Address")
+                        .WithMany("Batches")
+                        .HasForeignKey("AddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("academyems.dbcontext.Entities.Course", "Course")
+                        .WithMany("Batches")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("academyems.dbcontext.Entities.UserDetail", "UserDetail")
+                        .WithMany("Batches")
+                        .HasForeignKey("InstructorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Address");
+
+                    b.Navigation("Course");
+
+                    b.Navigation("UserDetail");
+                });
+
+            modelBuilder.Entity("academyems.dbcontext.Entities.BatchDetail", b =>
+                {
+                    b.HasOne("academyems.dbcontext.Entities.Batch", "Batch")
+                        .WithMany("BatchDetails")
+                        .HasForeignKey("BatchId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("academyems.dbcontext.Entities.UserDetail", "UserDetail")
+                        .WithMany()
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Batch");
+
+                    b.Navigation("UserDetail");
+                });
+
+            modelBuilder.Entity("academyems.dbcontext.Entities.Course", b =>
+                {
+                    b.HasOne("academyems.dbcontext.Entities.CourseType", "CourseType")
+                        .WithMany("Courses")
+                        .HasForeignKey("CourseTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CourseType");
+                });
+
+            modelBuilder.Entity("academyems.dbcontext.Entities.Address", b =>
+                {
+                    b.Navigation("Batches");
+                });
+
+            modelBuilder.Entity("academyems.dbcontext.Entities.Batch", b =>
+                {
+                    b.Navigation("BatchDetails");
+                });
+
+            modelBuilder.Entity("academyems.dbcontext.Entities.Course", b =>
+                {
+                    b.Navigation("Batches");
+                });
+
+            modelBuilder.Entity("academyems.dbcontext.Entities.CourseType", b =>
+                {
+                    b.Navigation("Courses");
+                });
+
+            modelBuilder.Entity("academyems.dbcontext.Entities.UserDetail", b =>
+                {
+                    b.Navigation("Batches");
                 });
 #pragma warning restore 612, 618
         }

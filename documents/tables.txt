@@ -24,6 +24,7 @@ table structure
 	
 2. user_detail	
 	id number,
+	user_code varchar,
 	first_name varchar,
 	last_name varchar,
 	gender varchar,
@@ -50,7 +51,7 @@ table structure
 	
 4. course	
 	id number,
-	course_type fk int course_type,
+	course_typeid fk int course_type,
 	course_name varchar,
 	course_description varchar,
 	created_date,

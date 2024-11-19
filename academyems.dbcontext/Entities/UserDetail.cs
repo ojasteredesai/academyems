@@ -43,13 +43,10 @@ namespace academyems.dbcontext.Entities
         [Column("email")]
         public string EMail { get; set; }
 
-        //[ForeignKey("Address")]
-        //[Column("address_id")]
-        //public int AddressId { get; set; }
-
         [Column("hashed_password")]
         public string HashedPassword { get; set; }
 
-        //public virtual Address Address { get; set; }
+        // Navigation property for the dependent entity
+        public ICollection<Batch> Batches { get; set; }
     }
 }

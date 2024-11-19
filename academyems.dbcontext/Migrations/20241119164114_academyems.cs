@@ -129,16 +129,140 @@ namespace academyems.dbcontext.Migrations
                 {
                     table.PrimaryKey("PK_user_type", x => x.id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "course",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    course_typeid = table.Column<int>(type: "integer", nullable: false),
+                    course_name = table.Column<string>(type: "text", nullable: false),
+                    course_description = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_course", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_course_course_type_course_typeid",
+                        column: x => x.course_typeid,
+                        principalTable: "course_type",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "batch",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    course_id = table.Column<int>(type: "integer", nullable: false),
+                    instructor_id = table.Column<int>(type: "integer", nullable: false),
+                    address_id = table.Column<int>(type: "integer", nullable: false),
+                    type = table.Column<string>(type: "text", nullable: false),
+                    description = table.Column<string>(type: "text", nullable: true),
+                    duration = table.Column<int>(type: "integer", nullable: false),
+                    start_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    end_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    time = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    capacity = table.Column<int>(type: "integer", nullable: false),
+                    fees = table.Column<double>(type: "double precision", nullable: false),
+                    CreatedBy = table.Column<int>(type: "integer", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "integer", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedOn = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_batch", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_batch_address_address_id",
+                        column: x => x.address_id,
+                        principalTable: "address",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_batch_course_course_id",
+                        column: x => x.course_id,
+                        principalTable: "course",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_batch_user_detail_instructor_id",
+                        column: x => x.instructor_id,
+                        principalTable: "user_detail",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "batch_detail",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    batch_id = table.Column<int>(type: "integer", nullable: false),
+                    student_id = table.Column<int>(type: "integer", nullable: false),
+                    enrollment_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedBy = table.Column<int>(type: "integer", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "integer", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedOn = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_batch_detail", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_batch_detail_batch_batch_id",
+                        column: x => x.batch_id,
+                        principalTable: "batch",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_batch_detail_user_detail_student_id",
+                        column: x => x.student_id,
+                        principalTable: "user_detail",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_batch_address_id",
+                table: "batch",
+                column: "address_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_batch_course_id",
+                table: "batch",
+                column: "course_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_batch_instructor_id",
+                table: "batch",
+                column: "instructor_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_batch_detail_batch_id",
+                table: "batch_detail",
+                column: "batch_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_batch_detail_student_id",
+                table: "batch_detail",
+                column: "student_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_course_course_typeid",
+                table: "course",
+                column: "course_typeid");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "address");
-
-            migrationBuilder.DropTable(
-                name: "course_type");
+                name: "batch_detail");
 
             migrationBuilder.DropTable(
                 name: "payment_status");
@@ -147,10 +271,22 @@ namespace academyems.dbcontext.Migrations
                 name: "payment_type");
 
             migrationBuilder.DropTable(
+                name: "user_type");
+
+            migrationBuilder.DropTable(
+                name: "batch");
+
+            migrationBuilder.DropTable(
+                name: "address");
+
+            migrationBuilder.DropTable(
+                name: "course");
+
+            migrationBuilder.DropTable(
                 name: "user_detail");
 
             migrationBuilder.DropTable(
-                name: "user_type");
+                name: "course_type");
         }
     }
 }

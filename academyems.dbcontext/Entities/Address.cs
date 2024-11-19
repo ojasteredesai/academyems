@@ -21,5 +21,8 @@ namespace academyems.dbcontext.Entities
 
         [Column("pincode")]
         public int PinCode { get; set; }
+
+        // Navigation property for the dependent entity
+        public ICollection<Batch> Batches { get; set; }
     }
 }
