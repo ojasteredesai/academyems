@@ -87,6 +87,32 @@ namespace academyems.dbcontext.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "user_detail",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    user_code = table.Column<string>(type: "text", nullable: false),
+                    first_name = table.Column<string>(type: "text", nullable: false),
+                    last_name = table.Column<string>(type: "text", nullable: false),
+                    gender = table.Column<string>(type: "text", nullable: false),
+                    date_of_birth = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    identity_id = table.Column<string>(type: "text", nullable: false),
+                    identity_type = table.Column<string>(type: "text", nullable: false),
+                    mobile_no = table.Column<int>(type: "integer", nullable: false),
+                    email = table.Column<string>(type: "text", nullable: false),
+                    hashed_password = table.Column<string>(type: "text", nullable: false),
+                    CreatedBy = table.Column<int>(type: "integer", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "integer", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedOn = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_user_detail", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "user_type",
                 columns: table => new
                 {
@@ -119,6 +145,9 @@ namespace academyems.dbcontext.Migrations
 
             migrationBuilder.DropTable(
                 name: "payment_type");
+
+            migrationBuilder.DropTable(
+                name: "user_detail");
 
             migrationBuilder.DropTable(
                 name: "user_type");

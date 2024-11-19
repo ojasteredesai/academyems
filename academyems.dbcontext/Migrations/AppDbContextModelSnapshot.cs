@@ -101,6 +101,80 @@ namespace academyems.dbcontext.Migrations
                     b.ToTable("course_type");
                 });
 
+            modelBuilder.Entity("academyems.dbcontext.Entities.UserDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_of_birth");
+
+                    b.Property<string>("EMail")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("email");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("first_name");
+
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("gender");
+
+                    b.Property<string>("HashedPassword")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("hashed_password");
+
+                    b.Property<string>("IdentityId")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("identity_id");
+
+                    b.Property<string>("IdentityType")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("identity_type");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("last_name");
+
+                    b.Property<int>("MobileNo")
+                        .HasColumnType("integer")
+                        .HasColumnName("mobile_no");
+
+                    b.Property<int>("UpdatedBy")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UpdatedOn")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("UserCode")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("user_code");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("user_detail");
+                });
+
             modelBuilder.Entity("academyems.dbcontext.PaymentStatus", b =>
                 {
                     b.Property<int>("Id")

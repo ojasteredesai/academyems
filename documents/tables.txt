@@ -28,6 +28,8 @@ table structure
 	last_name varchar,
 	gender varchar,
 	dob datetime,
+	mobile_no number,
+	email varchar,
 	identity_id varchar,
 	identity_type varchar,
 	address_id fk int address,
