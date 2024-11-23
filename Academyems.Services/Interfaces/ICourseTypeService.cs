@@ -1,9 +1,9 @@
 ﻿using Academyems.CoreDbContext.Entities;
 using Academyems.Data.DTO;
 
-namespace Academyems.Repositories
+namespace Academyems.Services
 {
-    public interface ICourseTypeRepository
+    public interface ICourseTypeService
     {
         List<CourseType> GetAll();
         CourseTypeDTO GetByID(int id);
