@@ -5,7 +5,7 @@ namespace Academyems.Repositories
 {
     public interface ICourseTypeRepository
     {
-        List<CourseType> GetAll();
+        List<CourseTypeDTO> GetAll();
         CourseTypeDTO GetByID(int id);
         List<CourseTypeDTO> GetByCourseId(int courseId);
         List<CourseTypeDTO> GetByCourseTypeID(int id);

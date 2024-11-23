@@ -17,9 +17,9 @@ namespace Academyems.Services
             return _courseTypeRepository.CreateCourseType(request);
         }
 
-        public List<CourseType> GetAll()
+        public List<CourseTypeDTO> GetAll()
         {
-            throw new NotImplementedException();
+            return _courseTypeRepository.GetAll();
         }
 
         public List<CourseTypeDTO> GetByCourseId(int courseId)

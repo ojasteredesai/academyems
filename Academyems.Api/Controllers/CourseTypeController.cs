@@ -16,6 +16,23 @@ namespace Academyems.Api.Controllers
             _courseTypeService = courseTypeService;
         }
 
+
+        [HttpGet("GetAllCourseTypes")]
+        public IActionResult Get()
+        {
+            var result = _courseTypeService.GetAll();
+            if (result != null)
+            {
+                return Ok(new CourseTypeResponse
+                {
+                    CourseTypes = result,
+                    Success = true
+                });
+            }
+
+            return NotFound();
+        }
+
         [HttpPost("CreateCourseType")]
         public IActionResult CreateCourseType(CreateCourseTypeRequest courseType)
         {

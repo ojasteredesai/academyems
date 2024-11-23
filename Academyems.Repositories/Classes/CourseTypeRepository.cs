@@ -18,9 +18,17 @@ namespace Academyems.Repositories
             return 1;
         }
 
-        public List<CourseType> GetAll()
+        public List<CourseTypeDTO> GetAll()
         {
-            throw new NotImplementedException();
+
+            var courseTypes = from courseType in _dbContext.CourseType
+                               select new CourseTypeDTO
+                               {
+                                   Id = courseType.Id,
+                                   Type = courseType.Type,
+                                   Description=courseType.Description
+                               };
+            return courseTypes.ToList();
         }
 
         public List<CourseTypeDTO> GetByCourseId(int courseId)
