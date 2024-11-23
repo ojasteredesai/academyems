@@ -3,20 +3,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace academyems.dbcontext.Entities
 {
-    [Table(name: "course_type")]
-    public class CourseType : BaseEntity
+    public class BatchStatus : BaseEntity
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("id")]
         public int Id { get; set; }
 
-        [Column("type")]
-        public string Type { get; set; }
+        [Column("status")]
+        public string Status { get; set; }
 
         [Column("description")]
         public string? Description { get; set; }
 
         // Navigation property for the dependent entity
-        public ICollection<Course> Courses { get; set; }
+        public ICollection<BatchDetail> BatchDetails { get; set; }
     }
 }

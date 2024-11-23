@@ -12,7 +12,7 @@ using academyems.dbcontext;
 namespace academyems.dbcontext.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241119164114_academyems")]
+    [Migration("20241123055536_academyems")]
     partial class academyems
     {
         /// <inheritdoc />
@@ -159,6 +159,10 @@ namespace academyems.dbcontext.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("batch_id");
 
+                    b.Property<int>("BatchStatusId")
+                        .HasColumnType("integer")
+                        .HasColumnName("batch_statusid");
+
                     b.Property<int>("CreatedBy")
                         .HasColumnType("integer");
 
@@ -183,9 +187,46 @@ namespace academyems.dbcontext.Migrations
 
                     b.HasIndex("BatchId");
 
+                    b.HasIndex("BatchStatusId");
+
                     b.HasIndex("StudentId");
 
                     b.ToTable("batch_detail");
+                });
+
+            modelBuilder.Entity("academyems.dbcontext.Entities.BatchStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text")
+                        .HasColumnName("description");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("status");
+
+                    b.Property<int>("UpdatedBy")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UpdatedOn")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BatchStatus");
                 });
 
             modelBuilder.Entity("academyems.dbcontext.Entities.Course", b =>
@@ -209,6 +250,18 @@ namespace academyems.dbcontext.Migrations
                     b.Property<int>("CourseTypeId")
                         .HasColumnType("integer")
                         .HasColumnName("course_typeid");
+
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("UpdatedBy")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UpdatedOn")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -250,6 +303,40 @@ namespace academyems.dbcontext.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("course_type");
+                });
+
+            modelBuilder.Entity("academyems.dbcontext.Entities.Payment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BatchEnrollmentId")
+                        .HasColumnType("integer")
+                        .HasColumnName("batch_enrollment_id");
+
+                    b.Property<double>("PaymentDifference")
+                        .HasColumnType("double precision")
+                        .HasColumnName("payment_difference");
+
+                    b.Property<int>("PaymentStatusId")
+                        .HasColumnType("integer")
+                        .HasColumnName("payment_statusid");
+
+                    b.Property<int>("PaymentTypeId")
+                        .HasColumnType("integer")
+                        .HasColumnName("payment_typeid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PaymentStatusId");
+
+                    b.HasIndex("PaymentTypeId");
+
+                    b.ToTable("Payment");
                 });
 
             modelBuilder.Entity("academyems.dbcontext.Entities.UserDetail", b =>
@@ -321,7 +408,13 @@ namespace academyems.dbcontext.Migrations
                         .HasColumnType("text")
                         .HasColumnName("user_code");
 
+                    b.Property<int>("UserTypeId")
+                        .HasColumnType("integer")
+                        .HasColumnName("user_typeid");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserTypeId");
 
                     b.ToTable("user_detail");
                 });
@@ -466,6 +559,12 @@ namespace academyems.dbcontext.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("academyems.dbcontext.Entities.BatchStatus", "BatchStatus")
+                        .WithMany("BatchDetails")
+                        .HasForeignKey("BatchStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("academyems.dbcontext.Entities.UserDetail", "UserDetail")
                         .WithMany()
                         .HasForeignKey("StudentId")
@@ -473,6 +572,8 @@ namespace academyems.dbcontext.Migrations
                         .IsRequired();
 
                     b.Navigation("Batch");
+
+                    b.Navigation("BatchStatus");
 
                     b.Navigation("UserDetail");
                 });
@@ -488,12 +589,47 @@ namespace academyems.dbcontext.Migrations
                     b.Navigation("CourseType");
                 });
 
+            modelBuilder.Entity("academyems.dbcontext.Entities.Payment", b =>
+                {
+                    b.HasOne("academyems.dbcontext.PaymentStatus", "PaymentStatus")
+                        .WithMany("Payments")
+                        .HasForeignKey("PaymentStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("academyems.dbcontext.PaymentType", "PaymentType")
+                        .WithMany("Payments")
+                        .HasForeignKey("PaymentTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("PaymentStatus");
+
+                    b.Navigation("PaymentType");
+                });
+
+            modelBuilder.Entity("academyems.dbcontext.Entities.UserDetail", b =>
+                {
+                    b.HasOne("academyems.dbcontext.UserType", "UserType")
+                        .WithMany("UserDetails")
+                        .HasForeignKey("UserTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserType");
+                });
+
             modelBuilder.Entity("academyems.dbcontext.Entities.Address", b =>
                 {
                     b.Navigation("Batches");
                 });
 
             modelBuilder.Entity("academyems.dbcontext.Entities.Batch", b =>
+                {
+                    b.Navigation("BatchDetails");
+                });
+
+            modelBuilder.Entity("academyems.dbcontext.Entities.BatchStatus", b =>
                 {
                     b.Navigation("BatchDetails");
                 });
@@ -511,6 +647,21 @@ namespace academyems.dbcontext.Migrations
             modelBuilder.Entity("academyems.dbcontext.Entities.UserDetail", b =>
                 {
                     b.Navigation("Batches");
+                });
+
+            modelBuilder.Entity("academyems.dbcontext.PaymentStatus", b =>
+                {
+                    b.Navigation("Payments");
+                });
+
+            modelBuilder.Entity("academyems.dbcontext.PaymentType", b =>
+                {
+                    b.Navigation("Payments");
+                });
+
+            modelBuilder.Entity("academyems.dbcontext.UserType", b =>
+                {
+                    b.Navigation("UserDetails");
                 });
 #pragma warning restore 612, 618
         }

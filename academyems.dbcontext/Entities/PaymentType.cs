@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using academyems.dbcontext.Entities;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace academyems.dbcontext
@@ -15,5 +16,9 @@ namespace academyems.dbcontext
 
         [Column("description")]
         public string? Description { get; set; }
+
+
+        // Navigation property for the dependent entity
+        public ICollection<Payment> Payments { get; set; }
     }
 }

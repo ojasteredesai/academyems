@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace academyems.dbcontext.Entities
 {
@@ -18,6 +13,9 @@ namespace academyems.dbcontext.Entities
         [Column("batch_id")]
         public int BatchId { get; set; }
 
+        [Column("batch_statusid")]
+        public int BatchStatusId { get; set; }
+
         [Column("student_id")]
         public int StudentId { get; set; }
 
@@ -26,9 +24,11 @@ namespace academyems.dbcontext.Entities
         public DateTime EnrollmentDate { get; set; }
 
 
-        // Navigation property for the dependent entity
         [ForeignKey("BatchId")]
         public Batch Batch { get; set; }
+
+        [ForeignKey("BatchStatusId")]
+        public BatchStatus BatchStatus { get; set; }
 
 
         [ForeignKey("StudentId")]

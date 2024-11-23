@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace academyems.dbcontext.Entities
 {
@@ -18,6 +12,9 @@ namespace academyems.dbcontext.Entities
 
         [Column("user_code")]
         public string UserCode { get; set; }
+
+        [Column("user_typeid")]
+        public int UserTypeId { get; set; }
 
         [Column("first_name")]
         public string FirstName { get; set; }
@@ -46,7 +43,13 @@ namespace academyems.dbcontext.Entities
         [Column("hashed_password")]
         public string HashedPassword { get; set; }
 
+
+        [ForeignKey("UserTypeId")]
+        public UserType UserType { get; set; }
+
         // Navigation property for the dependent entity
         public ICollection<Batch> Batches { get; set; }
+
+
     }
 }

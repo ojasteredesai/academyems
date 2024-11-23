@@ -33,6 +33,24 @@ namespace academyems.dbcontext.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "BatchStatus",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    status = table.Column<string>(type: "text", nullable: false),
+                    description = table.Column<string>(type: "text", nullable: true),
+                    CreatedBy = table.Column<int>(type: "integer", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "integer", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedOn = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BatchStatus", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "course_type",
                 columns: table => new
                 {
@@ -87,32 +105,6 @@ namespace academyems.dbcontext.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "user_detail",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    user_code = table.Column<string>(type: "text", nullable: false),
-                    first_name = table.Column<string>(type: "text", nullable: false),
-                    last_name = table.Column<string>(type: "text", nullable: false),
-                    gender = table.Column<string>(type: "text", nullable: false),
-                    date_of_birth = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    identity_id = table.Column<string>(type: "text", nullable: false),
-                    identity_type = table.Column<string>(type: "text", nullable: false),
-                    mobile_no = table.Column<int>(type: "integer", nullable: false),
-                    email = table.Column<string>(type: "text", nullable: false),
-                    hashed_password = table.Column<string>(type: "text", nullable: false),
-                    CreatedBy = table.Column<int>(type: "integer", nullable: false),
-                    UpdatedBy = table.Column<int>(type: "integer", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdatedOn = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_user_detail", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "user_type",
                 columns: table => new
                 {
@@ -138,7 +130,11 @@ namespace academyems.dbcontext.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     course_typeid = table.Column<int>(type: "integer", nullable: false),
                     course_name = table.Column<string>(type: "text", nullable: false),
-                    course_description = table.Column<string>(type: "text", nullable: true)
+                    course_description = table.Column<string>(type: "text", nullable: true),
+                    CreatedBy = table.Column<int>(type: "integer", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "integer", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedOn = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -147,6 +143,67 @@ namespace academyems.dbcontext.Migrations
                         name: "FK_course_course_type_course_typeid",
                         column: x => x.course_typeid,
                         principalTable: "course_type",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Payment",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    batch_enrollment_id = table.Column<int>(type: "integer", nullable: false),
+                    payment_typeid = table.Column<int>(type: "integer", nullable: false),
+                    payment_statusid = table.Column<int>(type: "integer", nullable: false),
+                    payment_difference = table.Column<double>(type: "double precision", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Payment", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Payment_payment_status_payment_statusid",
+                        column: x => x.payment_statusid,
+                        principalTable: "payment_status",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Payment_payment_type_payment_typeid",
+                        column: x => x.payment_typeid,
+                        principalTable: "payment_type",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "user_detail",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    user_code = table.Column<string>(type: "text", nullable: false),
+                    user_typeid = table.Column<int>(type: "integer", nullable: false),
+                    first_name = table.Column<string>(type: "text", nullable: false),
+                    last_name = table.Column<string>(type: "text", nullable: false),
+                    gender = table.Column<string>(type: "text", nullable: false),
+                    date_of_birth = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    identity_id = table.Column<string>(type: "text", nullable: false),
+                    identity_type = table.Column<string>(type: "text", nullable: false),
+                    mobile_no = table.Column<int>(type: "integer", nullable: false),
+                    email = table.Column<string>(type: "text", nullable: false),
+                    hashed_password = table.Column<string>(type: "text", nullable: false),
+                    CreatedBy = table.Column<int>(type: "integer", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "integer", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedOn = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_user_detail", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_user_detail_user_type_user_typeid",
+                        column: x => x.user_typeid,
+                        principalTable: "user_type",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -203,6 +260,7 @@ namespace academyems.dbcontext.Migrations
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     batch_id = table.Column<int>(type: "integer", nullable: false),
+                    batch_statusid = table.Column<int>(type: "integer", nullable: false),
                     student_id = table.Column<int>(type: "integer", nullable: false),
                     enrollment_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreatedBy = table.Column<int>(type: "integer", nullable: false),
@@ -213,6 +271,12 @@ namespace academyems.dbcontext.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_batch_detail", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_batch_detail_BatchStatus_batch_statusid",
+                        column: x => x.batch_statusid,
+                        principalTable: "BatchStatus",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_batch_detail_batch_batch_id",
                         column: x => x.batch_id,
@@ -248,6 +312,11 @@ namespace academyems.dbcontext.Migrations
                 column: "batch_id");
 
             migrationBuilder.CreateIndex(
+                name: "IX_batch_detail_batch_statusid",
+                table: "batch_detail",
+                column: "batch_statusid");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_batch_detail_student_id",
                 table: "batch_detail",
                 column: "student_id");
@@ -256,6 +325,21 @@ namespace academyems.dbcontext.Migrations
                 name: "IX_course_course_typeid",
                 table: "course",
                 column: "course_typeid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Payment_payment_statusid",
+                table: "Payment",
+                column: "payment_statusid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Payment_payment_typeid",
+                table: "Payment",
+                column: "payment_typeid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_user_detail_user_typeid",
+                table: "user_detail",
+                column: "user_typeid");
         }
 
         /// <inheritdoc />
@@ -265,16 +349,19 @@ namespace academyems.dbcontext.Migrations
                 name: "batch_detail");
 
             migrationBuilder.DropTable(
+                name: "Payment");
+
+            migrationBuilder.DropTable(
+                name: "BatchStatus");
+
+            migrationBuilder.DropTable(
+                name: "batch");
+
+            migrationBuilder.DropTable(
                 name: "payment_status");
 
             migrationBuilder.DropTable(
                 name: "payment_type");
-
-            migrationBuilder.DropTable(
-                name: "user_type");
-
-            migrationBuilder.DropTable(
-                name: "batch");
 
             migrationBuilder.DropTable(
                 name: "address");
@@ -287,6 +374,9 @@ namespace academyems.dbcontext.Migrations
 
             migrationBuilder.DropTable(
                 name: "course_type");
+
+            migrationBuilder.DropTable(
+                name: "user_type");
         }
     }
 }
