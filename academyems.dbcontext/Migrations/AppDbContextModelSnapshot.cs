@@ -58,8 +58,8 @@ namespace Academyems.CoreDbContext.Migrations
                     b.Property<int>("UpdatedBy")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UpdatedOn")
-                        .HasColumnType("integer");
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -129,8 +129,8 @@ namespace Academyems.CoreDbContext.Migrations
                     b.Property<int>("UpdatedBy")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UpdatedOn")
-                        .HasColumnType("integer");
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -177,8 +177,8 @@ namespace Academyems.CoreDbContext.Migrations
                     b.Property<int>("UpdatedBy")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UpdatedOn")
-                        .HasColumnType("integer");
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -218,8 +218,8 @@ namespace Academyems.CoreDbContext.Migrations
                     b.Property<int>("UpdatedBy")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UpdatedOn")
-                        .HasColumnType("integer");
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -257,8 +257,8 @@ namespace Academyems.CoreDbContext.Migrations
                     b.Property<int>("UpdatedBy")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UpdatedOn")
-                        .HasColumnType("integer");
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -294,8 +294,8 @@ namespace Academyems.CoreDbContext.Migrations
                     b.Property<int>("UpdatedBy")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UpdatedOn")
-                        .HasColumnType("integer");
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -390,15 +390,15 @@ namespace Academyems.CoreDbContext.Migrations
                         .HasColumnType("text")
                         .HasColumnName("last_name");
 
-                    b.Property<int>("MobileNo")
-                        .HasColumnType("integer")
+                    b.Property<long>("MobileNo")
+                        .HasColumnType("bigint")
                         .HasColumnName("mobile_no");
 
                     b.Property<int>("UpdatedBy")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UpdatedOn")
-                        .HasColumnType("integer");
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("UserCode")
                         .IsRequired()
@@ -443,8 +443,8 @@ namespace Academyems.CoreDbContext.Migrations
                     b.Property<int>("UpdatedBy")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UpdatedOn")
-                        .HasColumnType("integer");
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -478,8 +478,8 @@ namespace Academyems.CoreDbContext.Migrations
                     b.Property<int>("UpdatedBy")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UpdatedOn")
-                        .HasColumnType("integer");
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -513,8 +513,8 @@ namespace Academyems.CoreDbContext.Migrations
                     b.Property<int>("UpdatedBy")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UpdatedOn")
-                        .HasColumnType("integer");
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 

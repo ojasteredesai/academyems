@@ -14,7 +14,7 @@ table name
 
 table structure
 
-1. user_type (trainer,student,staff)
+1. user_type (super admin, trainer,student,staff)
 	id number,
 	type_name varchar,
 	created_date,

@@ -25,7 +25,7 @@ namespace Academyems.CoreDbContext.Migrations
                     CreatedBy = table.Column<int>(type: "integer", nullable: false),
                     UpdatedBy = table.Column<int>(type: "integer", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdatedOn = table.Column<int>(type: "integer", nullable: false)
+                    UpdatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -43,7 +43,7 @@ namespace Academyems.CoreDbContext.Migrations
                     CreatedBy = table.Column<int>(type: "integer", nullable: false),
                     UpdatedBy = table.Column<int>(type: "integer", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdatedOn = table.Column<int>(type: "integer", nullable: false)
+                    UpdatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -61,7 +61,7 @@ namespace Academyems.CoreDbContext.Migrations
                     CreatedBy = table.Column<int>(type: "integer", nullable: false),
                     UpdatedBy = table.Column<int>(type: "integer", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdatedOn = table.Column<int>(type: "integer", nullable: false)
+                    UpdatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -79,7 +79,7 @@ namespace Academyems.CoreDbContext.Migrations
                     CreatedBy = table.Column<int>(type: "integer", nullable: false),
                     UpdatedBy = table.Column<int>(type: "integer", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdatedOn = table.Column<int>(type: "integer", nullable: false)
+                    UpdatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -97,7 +97,7 @@ namespace Academyems.CoreDbContext.Migrations
                     CreatedBy = table.Column<int>(type: "integer", nullable: false),
                     UpdatedBy = table.Column<int>(type: "integer", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdatedOn = table.Column<int>(type: "integer", nullable: false)
+                    UpdatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -115,7 +115,7 @@ namespace Academyems.CoreDbContext.Migrations
                     CreatedBy = table.Column<int>(type: "integer", nullable: false),
                     UpdatedBy = table.Column<int>(type: "integer", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdatedOn = table.Column<int>(type: "integer", nullable: false)
+                    UpdatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -134,7 +134,7 @@ namespace Academyems.CoreDbContext.Migrations
                     CreatedBy = table.Column<int>(type: "integer", nullable: false),
                     UpdatedBy = table.Column<int>(type: "integer", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdatedOn = table.Column<int>(type: "integer", nullable: false)
+                    UpdatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -189,13 +189,13 @@ namespace Academyems.CoreDbContext.Migrations
                     date_of_birth = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     identity_id = table.Column<string>(type: "text", nullable: false),
                     identity_type = table.Column<string>(type: "text", nullable: false),
-                    mobile_no = table.Column<int>(type: "integer", nullable: false),
+                    mobile_no = table.Column<long>(type: "bigint", nullable: false),
                     email = table.Column<string>(type: "text", nullable: false),
                     hashed_password = table.Column<string>(type: "text", nullable: false),
                     CreatedBy = table.Column<int>(type: "integer", nullable: false),
                     UpdatedBy = table.Column<int>(type: "integer", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdatedOn = table.Column<int>(type: "integer", nullable: false)
+                    UpdatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -228,7 +228,7 @@ namespace Academyems.CoreDbContext.Migrations
                     CreatedBy = table.Column<int>(type: "integer", nullable: false),
                     UpdatedBy = table.Column<int>(type: "integer", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdatedOn = table.Column<int>(type: "integer", nullable: false)
+                    UpdatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -266,7 +266,7 @@ namespace Academyems.CoreDbContext.Migrations
                     CreatedBy = table.Column<int>(type: "integer", nullable: false),
                     UpdatedBy = table.Column<int>(type: "integer", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdatedOn = table.Column<int>(type: "integer", nullable: false)
+                    UpdatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {

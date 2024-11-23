@@ -35,7 +35,7 @@ namespace Academyems.CoreDbContext.Entities
         public string IdentityType { get; set; }
 
         [Column("mobile_no")]
-        public int MobileNo { get; set; }
+        public long MobileNo { get; set; }
 
         [Column("email")]
         public string EMail { get; set; }
