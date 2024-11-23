@@ -1,6 +1,6 @@
-@academyems.api_HostAddress = http://localhost:5251
+@Academyems.Api_HostAddress = http://localhost:5251
 
-GET {{academyems.api_HostAddress}}/weatherforecast/
+GET {{Academyems.Api_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###

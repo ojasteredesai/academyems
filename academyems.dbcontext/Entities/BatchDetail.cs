@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace academyems.dbcontext.Entities
+namespace Academyems.CoreDbContext.Entities
 {
     [Table(name: "batch_detail")]
     public class BatchDetail : BaseEntity

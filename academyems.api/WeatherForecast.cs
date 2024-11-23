@@ -1,4 +1,4 @@
-namespace academyems.api
+namespace Academyems.Api
 {
     public class WeatherForecast
     {

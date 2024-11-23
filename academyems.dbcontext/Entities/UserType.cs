@@ -1,8 +1,8 @@
-﻿using academyems.dbcontext.Entities;
+﻿using Academyems.CoreDbContext.Entities;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace academyems.dbcontext
+namespace Academyems.CoreDbContext
 {
     [Table(name: "user_type")]
     public class UserType : BaseEntity

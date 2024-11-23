@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace academyems.dbcontext.Entities
+namespace Academyems.CoreDbContext.Entities
 {
     public class BatchStatus : BaseEntity
     {

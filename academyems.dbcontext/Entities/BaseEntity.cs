@@ -1,4 +1,4 @@
-﻿namespace academyems.dbcontext
+﻿namespace Academyems.CoreDbContext
 {
     public class BaseEntity
     {

@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "academyems.api", "academyems.api.csproj", "{D32109FD-7511-4BD9-AD88-2DECA391B4B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Academyems.Api", "Academyems.Api.csproj", "{D32109FD-7511-4BD9-AD88-2DECA391B4B9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "academyems.services", "..\academyems.services\academyems.services.csproj", "{3092D729-6D3C-43C4-9007-93FF06BC251B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Academyems.Services", "..\academyems.services\Academyems.Services.csproj", "{3092D729-6D3C-43C4-9007-93FF06BC251B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "academyems.repositories", "..\academyems.repositories\academyems.repositories.csproj", "{1A1AA2E8-8D93-4D8E-8E15-4357970716DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Academyems.Repositories", "..\academyems.repositories\Academyems.Repositories.csproj", "{1A1AA2E8-8D93-4D8E-8E15-4357970716DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "academyems.data", "..\academyems.data\academyems.data.csproj", "{1B52EA68-0744-4276-B99D-D6513E87062D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Academyems.Data", "..\academyems.data\Academyems.Data.csproj", "{1B52EA68-0744-4276-B99D-D6513E87062D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "academyems.dbcontext", "..\academyems.dbcontext\academyems.dbcontext.csproj", "{581F8F0F-85C9-4683-B1A7-1E8D691852C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Academyems.CoreDbContext", "..\academyems.dbcontext\Academyems.CoreDbContext.csproj", "{581F8F0F-85C9-4683-B1A7-1E8D691852C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

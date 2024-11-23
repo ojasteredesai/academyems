@@ -1,4 +1,4 @@
-using academyems.dbcontext;
+using Academyems.CoreDbContext;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

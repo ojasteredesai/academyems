@@ -1,4 +1,4 @@
-﻿namespace academyems.repositories
+﻿namespace Academyems.Repositories
 {
     public class Class1
     {

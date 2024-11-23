@@ -1,7 +1,7 @@
-﻿using academyems.dbcontext.Entities;
+﻿using Academyems.CoreDbContext.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace academyems.dbcontext
+namespace Academyems.CoreDbContext
 {
     public class AppDbContext : DbContext
     {
