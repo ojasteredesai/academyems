@@ -2,6 +2,9 @@
 {
     public class CreateCourseTypeRequest : BaseRequest
     {
-        public CreateCourseTypeRequest() { }    
+        public CreateCourseTypeRequest() 
+        {
+
+        }    
     }
 }
