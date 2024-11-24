@@ -16,7 +16,6 @@ namespace Academyems.Api.Controllers
             _courseTypeService = courseTypeService;
         }
 
-
         [HttpGet("GetAllCourseTypes")]
         public IActionResult Get()
         {
@@ -36,7 +35,7 @@ namespace Academyems.Api.Controllers
         [HttpPost("CreateCourseType")]
         public IActionResult CreateCourseType(CreateCourseTypeRequest courseType)
         {
-            CourseType inputCourseType = new CourseType
+            CourseType inputCourseType = new()
             {
             };
 
