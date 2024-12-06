@@ -1,5 +1,5 @@
-﻿using Academyems.CoreDbContext.Entities;
-using Academyems.Data.DTO;
+﻿using Academyems.Data.DTO;
+using Academyems.Data.DTO.User;
 using Academyems.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,26 +7,25 @@ namespace Academyems.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CourseTypeController : ControllerBase
+    public class UserTypeController : ControllerBase
     {
-        private readonly ICourseTypeService _courseTypeService;
+        private readonly IUserTypeService _userTypeService;
 
-        public CourseTypeController(ICourseTypeService courseTypeService)
+        public UserTypeController(IUserTypeService userTypeService)
         {
-            _courseTypeService = courseTypeService;
+            _userTypeService = userTypeService;
         }
-
         [HttpGet("GetAllCourseTypes")]
         public IActionResult Get()
         {
-            CourseTypeResponse response;
+            UserTypeResponse response;
             try
             {
-                response = _courseTypeService.GetAll();
+                response = _userTypeService.GetAll();
             }
             catch (Exception ex)
             {
-                response = new CourseTypeResponse
+                response = new UserTypeResponse
                 {
                     Error = ex.Message,
                     Success = false
@@ -39,17 +38,17 @@ namespace Academyems.Api.Controllers
             return Ok(response);
         }
 
-        [HttpPost("CreateCourseType")]
-        public IActionResult CreateCourseType(CreateCourseTypeRequest courseType)
+        [HttpPost("CreateUserType")]
+        public IActionResult CreateCourseType(CreateUserTypeRequest userType)
         {
-            CourseTypeResponse response;
+            UserTypeResponse response;
             try
             {
-                response = _courseTypeService.CreateCourseType(courseType);
+                response = _userTypeService.CreateUserType(userType);
             }
             catch (Exception ex)
             {
-                response = new CourseTypeResponse
+                response = new UserTypeResponse
                 {
                     Error = ex.Message,
                     Success = false
@@ -62,17 +61,17 @@ namespace Academyems.Api.Controllers
             return Ok(response);
         }
 
-        [HttpPost("UpdateCourseType")]
-        public IActionResult UpdateCourseType(UpdateCourseTypeRequest courseType)
+        [HttpPost("UpdateUserType")]
+        public IActionResult UpdateUserType(UpdateUserTypeRequest userType)
         {
-            CourseTypeResponse response;
+            UserTypeResponse response;
             try
             {
-                response = _courseTypeService.UpdateCourseType(courseType);
+                response = _userTypeService.UpdateUserType(userType);
             }
             catch (Exception ex)
             {
-                response = new CourseTypeResponse
+                response = new UserTypeResponse
                 {
                     Error = ex.Message,
                     Success = false
@@ -85,17 +84,17 @@ namespace Academyems.Api.Controllers
             return Ok(response);
         }
 
-        [HttpPost("DeleteCourseType")]
+        [HttpPost("DeleteUserType")]
         public IActionResult DeleteCourseType(int id)
         {
-            CourseTypeResponse response;
+            UserTypeResponse response;
             try
             {
-                response = _courseTypeService.DeleteCourseType(id);
+                response = _userTypeService.DeleteUserType(id);
             }
             catch (Exception ex)
             {
-                response = new CourseTypeResponse
+                response = new UserTypeResponse
                 {
                     Error = ex.Message,
                     Success = false
@@ -109,3 +108,4 @@ namespace Academyems.Api.Controllers
         }
     }
 }
+

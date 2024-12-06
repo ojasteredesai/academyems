@@ -1,5 +1,6 @@
 using Academyems.CoreDbContext;
 using Academyems.Repositories;
+using Academyems.Repositories.Classes;
 using Academyems.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,7 +27,9 @@ builder.Services.AddCors(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<ICourseTypeRepository, CourseTypeRepository>();
+builder.Services.AddTransient<IUserTypeRepository, UserTypeRepository>();
 builder.Services.AddTransient<ICourseTypeService, CourseTypeService>();
+builder.Services.AddTransient<IUserTypeService, UserTypeService>();
 
 var app = builder.Build();
 

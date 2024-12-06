@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Academyems.CoreDbContext
+namespace Academyems.CoreDbContext.Entities
 {
     [Table(name: "user_type")]
     public class UserType : BaseEntity

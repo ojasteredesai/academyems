@@ -1,5 +1,4 @@
-﻿using Academyems.CoreDbContext.Entities;
-using Academyems.Data.DTO;
+﻿using Academyems.Data.DTO;
 
 namespace Academyems.Services
 {

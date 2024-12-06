@@ -6,7 +6,6 @@ namespace Academyems.Repositories
 {
     public class CourseTypeRepository : ICourseTypeRepository
     {
-
         private readonly AppDbContext _dbContext;
         public CourseTypeRepository(AppDbContext dbContext)
         {
@@ -65,7 +64,8 @@ namespace Academyems.Repositories
         public int DeleteCourseType(int id)
         {
             var courseType = _dbContext.CourseType
-                        .Where(cType => cType.Id == id).FirstOrDefault();
+                        .Where(cType => cType.Id == id)
+                        .FirstOrDefault();
             if (courseType != null)
             {
                 _dbContext.CourseType.Remove(courseType);
