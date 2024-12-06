@@ -15,7 +15,7 @@ namespace Academyems.Api.Controllers
         {
             _userTypeService = userTypeService;
         }
-        [HttpGet("GetAllCourseTypes")]
+        [HttpGet("GetAllUserTypes")]
         public IActionResult Get()
         {
             UserTypeResponse response;
