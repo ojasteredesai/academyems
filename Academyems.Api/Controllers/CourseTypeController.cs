@@ -20,41 +20,13 @@ namespace Academyems.Api.Controllers
         public IActionResult Get()
         {
             var result = _courseTypeService.GetAll();
-            if (result != null)
-            {
-                return Ok(new CourseTypeResponse
-                {
-                    CourseTypes = result,
-                    Success = true
-                });
-            }
-
-            return NotFound();
+            return (result != null) ? Ok(result) : NotFound();
         }
 
         [HttpPost("CreateCourseType")]
         public IActionResult CreateCourseType(CreateCourseTypeRequest courseType)
         {
-            CourseType inputCourseType = new()
-            {
-            };
-
-            int createdId = _courseTypeService.CreateCourseType(inputCourseType);
-            if (createdId > 0)
-            {
-                CreateCourseTypeResponse response = new CreateCourseTypeResponse
-                {
-                    Success = true
-                };
-
-                return Ok(response);
-            }
-
-            return Ok(new CreateCourseTypeResponse
-            {
-                Success = false,
-                Error = "Error while creating profile!"
-            });
+            return Ok(_courseTypeService.CreateCourseType(courseType));
         }
     }
 }

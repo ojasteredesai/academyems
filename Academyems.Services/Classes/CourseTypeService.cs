@@ -12,14 +12,31 @@ namespace Academyems.Services
             _courseTypeRepository = courseTypeRepository;
         }
 
-        public int CreateCourseType(CourseType request)
+        public CreateCourseTypeResponse CreateCourseType(CreateCourseTypeRequest request)
         {
-            return _courseTypeRepository.CreateCourseType(request);
+            CourseType inputCourseType = new()
+            {
+                Type = request.Type,
+                Description = request.Description,
+                CreatedBy = 1,
+                UpdatedBy = 1,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow
+            };
+
+            return new CreateCourseTypeResponse
+            {
+                Success = _courseTypeRepository.CreateCourseType(inputCourseType) > 0
+            }; 
         }
 
-        public List<CourseTypeDTO> GetAll()
+        public CourseTypeResponse GetAll()
         {
-            return _courseTypeRepository.GetAll();
+            return new CourseTypeResponse
+            {
+                CourseTypes = _courseTypeRepository.GetAll(),
+                Success = true
+            };
         }
 
         public List<CourseTypeDTO> GetByCourseId(int courseId)

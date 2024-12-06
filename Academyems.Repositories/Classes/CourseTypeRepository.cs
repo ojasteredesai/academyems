@@ -15,7 +15,9 @@ namespace Academyems.Repositories
 
         public int CreateCourseType(CourseType request)
         {
-            return 1;
+            _dbContext.CourseType.Add(request);
+            _dbContext.SaveChanges();
+            return request.Id;
         }
 
         public List<CourseTypeDTO> GetAll()

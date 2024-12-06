@@ -13,9 +13,12 @@ builder.Services.AddControllers();
 var emsOrigins = "_emsOrigins";
 builder.Services.AddCors(options =>
 {
+    // todo - this needs to be revisited
     options.AddPolicy(name: emsOrigins, policy =>
     {
-        policy.WithOrigins("http://localhost:4200");
+        policy.WithOrigins("http://localhost:4200")
+        .AllowAnyMethod()
+        .AllowAnyHeader();
     });
 });
 
@@ -27,10 +30,7 @@ builder.Services.AddTransient<ICourseTypeService, CourseTypeService>();
 
 var app = builder.Build();
 
-
 app.UseCors(emsOrigins);
-
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

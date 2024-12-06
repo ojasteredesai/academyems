@@ -2,9 +2,7 @@
 {
     public class CreateCourseTypeRequest : BaseRequest
     {
-        public CreateCourseTypeRequest() 
-        {
-
-        }    
+        public string Type { get; set; }
+        public string Description { get; set; }
     }
 }
