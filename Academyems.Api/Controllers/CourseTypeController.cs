@@ -28,5 +28,17 @@ namespace Academyems.Api.Controllers
         {
             return Ok(_courseTypeService.CreateCourseType(courseType));
         }
+
+        [HttpPost("UpdateCourseType")]
+        public IActionResult UpdateCourseType(UpdateCourseTypeRequest courseType)
+        {
+            return Ok(_courseTypeService.UpdateCourseType(courseType));
+        }
+
+        [HttpPost("DeleteCourseType")]
+        public IActionResult DeleteCourseType(int id)
+        {
+            return Ok(_courseTypeService.DeleteCourseType(id));
+        }
     }
 }

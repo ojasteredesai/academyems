@@ -10,5 +10,7 @@ namespace Academyems.Repositories
         List<CourseTypeDTO> GetByCourseId(int courseId);
         List<CourseTypeDTO> GetByCourseTypeID(int id);
         int CreateCourseType(CourseType request);
+        int UpdateCourseType(CourseType request);
+        int DeleteCourseType(int id);
     }
 }
