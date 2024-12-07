@@ -1,7 +1,7 @@
-﻿using Academyems.Data.DTO;
-using Academyems.Data.DTO.User;
+﻿using AcademyEMS.Data.DTO;
+using AcademyEMS.Data.DTO.User;
 
-namespace Academyems.Services
+namespace AcademyEMS.Services
 {
     public interface IUserTypeService
     {

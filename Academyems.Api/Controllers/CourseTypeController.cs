@@ -1,9 +1,9 @@
-﻿using Academyems.CoreDbContext.Entities;
-using Academyems.Data.DTO;
-using Academyems.Services;
+﻿using AcademyEMS.CoreDbContext.Entities;
+using AcademyEMS.Data.DTO;
+using AcademyEMS.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Academyems.Api.Controllers
+namespace AcademyEMS.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

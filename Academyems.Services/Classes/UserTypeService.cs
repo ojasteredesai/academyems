@@ -1,9 +1,9 @@
-﻿using Academyems.CoreDbContext.Entities;
-using Academyems.Data.DTO;
-using Academyems.Data.DTO.User;
-using Academyems.Repositories;
+﻿using AcademyEMS.CoreDbContext.Entities;
+using AcademyEMS.Data.DTO;
+using AcademyEMS.Data.DTO.User;
+using AcademyEMS.Repositories;
 
-namespace Academyems.Services
+namespace AcademyEMS.Services
 {
     public class UserTypeService : IUserTypeService
     {

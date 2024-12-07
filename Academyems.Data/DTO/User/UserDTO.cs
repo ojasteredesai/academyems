@@ -1,4 +1,4 @@
-﻿namespace Academyems.Data.DTO.User
+﻿namespace AcademyEMS.Data.DTO.User
 {
     public class UserDTO
     {

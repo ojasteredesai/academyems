@@ -1,4 +1,4 @@
-﻿namespace Academyems.Data
+﻿namespace AcademyEMS.Data
 {
     public class BaseRequest
     {

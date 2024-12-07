@@ -1,4 +1,4 @@
-﻿namespace Academyems.Data.DTO
+﻿namespace AcademyEMS.Data.DTO
 {
     public class CreateCourseTypeRequest : BaseRequest
     {

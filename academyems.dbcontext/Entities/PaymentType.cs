@@ -1,8 +1,8 @@
-﻿using Academyems.CoreDbContext.Entities;
+﻿using AcademyEMS.CoreDbContext.Entities;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Academyems.CoreDbContext
+namespace AcademyEMS.CoreDbContext
 {
     [Table(name: "payment_type")]
     public class PaymentType : BaseEntity

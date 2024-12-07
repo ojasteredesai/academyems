@@ -1,8 +1,8 @@
-﻿using Academyems.CoreDbContext.Entities;
-using Academyems.Data.DTO;
-using Academyems.Repositories;
+﻿using AcademyEMS.CoreDbContext.Entities;
+using AcademyEMS.Data.DTO;
+using AcademyEMS.Repositories;
 
-namespace Academyems.Services
+namespace AcademyEMS.Services
 {
     public class CourseTypeService : ICourseTypeService
     {

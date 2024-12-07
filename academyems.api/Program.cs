@@ -1,7 +1,7 @@
-using Academyems.CoreDbContext;
-using Academyems.Repositories;
-using Academyems.Repositories.Classes;
-using Academyems.Services;
+using AcademyEMS.CoreDbContext;
+using AcademyEMS.Repositories;
+using AcademyEMS.Repositories.Classes;
+using AcademyEMS.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

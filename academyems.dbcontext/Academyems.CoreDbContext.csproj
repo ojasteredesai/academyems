@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\academyems.data\academyems.data.csproj" />
+    <ProjectReference Include="..\academyems.data\AcademyEMS.Data.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,7 @@
-﻿using Academyems.CoreDbContext.Entities;
-using Academyems.Data.DTO;
+﻿using AcademyEMS.CoreDbContext.Entities;
+using AcademyEMS.Data.DTO;
 
-namespace Academyems.Repositories
+namespace AcademyEMS.Repositories
 {
     public interface IUserTypeRepository
     {

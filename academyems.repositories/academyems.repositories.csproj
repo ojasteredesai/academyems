@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\academyems.dbcontext\Academyems.CoreDbContext.csproj" />
+    <ProjectReference Include="..\academyems.dbcontext\AcademyEMS.CoreDbContext.csproj" />
   </ItemGroup>
 
 </Project>

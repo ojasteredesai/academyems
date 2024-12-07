@@ -1,6 +1,6 @@
-﻿using Academyems.Data.DTO;
+﻿using AcademyEMS.Data.DTO;
 
-namespace Academyems.Services
+namespace AcademyEMS.Services
 {
     public interface ICourseTypeService
     {
