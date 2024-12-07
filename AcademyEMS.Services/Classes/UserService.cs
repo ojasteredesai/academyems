@@ -1,6 +1,7 @@
 ﻿using AcademyEMS.CoreDbContext.Entities;
 using AcademyEMS.Data.DTO;
 using AcademyEMS.Repositories;
+using AcademyEMS.Repositories.Classes;
 
 namespace AcademyEMS.Services
 {
@@ -54,7 +55,11 @@ namespace AcademyEMS.Services
 
         public UserResponse GetAll()
         {
-            throw new NotImplementedException();
+            return new UserResponse
+            {
+                Users = _userRepository.GetAll(),
+                Success = true
+            };
         }
     }
 }
