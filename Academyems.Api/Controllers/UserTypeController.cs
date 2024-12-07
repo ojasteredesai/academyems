@@ -15,6 +15,7 @@ namespace AcademyEMS.Api.Controllers
         {
             _userTypeService = userTypeService;
         }
+
         [HttpGet("GetAllUserTypes")]
         public IActionResult Get()
         {
@@ -39,7 +40,7 @@ namespace AcademyEMS.Api.Controllers
         }
 
         [HttpPost("CreateUserType")]
-        public IActionResult CreateCourseType(CreateUserTypeRequest userType)
+        public IActionResult CreateUserType(CreateUserTypeRequest userType)
         {
             UserTypeResponse response;
             try

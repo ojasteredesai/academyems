@@ -40,8 +40,14 @@ namespace AcademyEMS.CoreDbContext.Entities
         [Column("email")]
         public string EMail { get; set; }
 
+        [Column("address_id")]
+        public int AddressId { get; set; }
+
         [Column("hashed_password")]
         public string HashedPassword { get; set; }
+
+        [ForeignKey("AddressId")]
+        public Address Address { get; set; }
 
 
         [ForeignKey("UserTypeId")]

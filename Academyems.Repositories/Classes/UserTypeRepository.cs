@@ -13,7 +13,6 @@ namespace AcademyEMS.Repositories.Classes
         }
         public int CreateUserType(UserType userType)
         {
-
             _dbContext.UserType.Add(userType);
             _dbContext.SaveChanges();
             return userType.Id;
