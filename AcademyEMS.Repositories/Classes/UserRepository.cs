@@ -1,6 +1,7 @@
 ﻿using AcademyEMS.CoreDbContext;
 using AcademyEMS.CoreDbContext.Entities;
 using AcademyEMS.Data.DTO;
+using AcademyEMS.Data.Enums;
 
 namespace AcademyEMS.Repositories
 {
@@ -25,17 +26,21 @@ namespace AcademyEMS.Repositories
                         {
                             Id = user.Id,
                             IdentityId = user.IdentityId,
+                            FirstName = user.FirstName,
+                            LastName = user.LastName,
                             UserName = user.FirstName + " " + user.LastName,
                             DateOfBirth = user.DateOfBirth,
                             AddressId = user.Address.Id,
                             Address1 = user.Address.AddressLine1,
                             Address2 = user.Address.AddressLine2,
-                            City= user.Address.City,
+                            City = user.Address.City,
                             IdentityType = user.IdentityType,
                             MobileNo = user.MobileNo,
                             PinCode = user.Address.PinCode,
                             UserEmail = user.EMail,
-                            UserTypeId = user.UserTypeId
+                            UserTypeId = user.UserTypeId,
+                            UserTypeName = ((EmsUserType)user.UserTypeId).ToString(),
+                            Gender = user.Gender
                         };
             return users.ToList();
         }

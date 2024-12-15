@@ -19,7 +19,7 @@ namespace AcademyEMS.Services
             {
                 FirstName = request.FirstName,
                 LastName = request.LastName,
-                DateOfBirth = request.DateOfBirth,
+                DateOfBirth = request.DateOfBirth.ToUniversalTime(),
                 EMail = request.UserEmail,
                 MobileNo = request.MobileNo,
                 HashedPassword = "To do passowrd",
