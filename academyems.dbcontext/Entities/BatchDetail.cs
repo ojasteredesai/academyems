@@ -27,10 +27,6 @@ namespace AcademyEMS.CoreDbContext.Entities
         [ForeignKey("BatchId")]
         public Batch Batch { get; set; }
 
-        [ForeignKey("BatchStatusId")]
-        public BatchStatus BatchStatus { get; set; }
-
-
         [ForeignKey("StudentId")]
         public UserDetail UserDetail { get; set; }
 

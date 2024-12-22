@@ -10,6 +10,9 @@ namespace AcademyEMS.CoreDbContext.Entities
         [Column("id")]
         public int Id { get; set; }
 
+        [Column("status_id")]
+        public int BatchStatusId { get; set; }
+
         [Column("course_id")]
         public int CourseId { get; set; }
 
@@ -48,6 +51,9 @@ namespace AcademyEMS.CoreDbContext.Entities
 
         [ForeignKey("InstructorId")]
         public UserDetail UserDetail { get; set; }
+
+        [ForeignKey("BatchStatusId")]
+        public BatchStatus BatchStatus { get; set; }
 
         [ForeignKey("AddressId")]
         public Address Address { get; set; }

@@ -7,9 +7,9 @@ namespace AcademyEMS.Services
     public class CourseService : ICourseService
     {
         private readonly ICourseRepository _courseRepository;
-        public CourseService(ICourseRepository CourseRepository)
+        public CourseService(ICourseRepository courseRepository)
         {
-            _courseRepository = CourseRepository;
+            _courseRepository = courseRepository;
         }
 
         public CourseResponse CreateUser(CreateCourseRequest request)
@@ -17,7 +17,7 @@ namespace AcademyEMS.Services
             Course inputCourse = new()
             {
                 CourseTypeId = request.CourseTypeId,
-                CourseDescription = request.Description,
+                CourseDescription = request.CourseDescription,
                 CourseName = request.CourseName,
                 CreatedBy = 1,
                 UpdatedBy = 1,

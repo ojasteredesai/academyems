@@ -16,6 +16,6 @@ namespace AcademyEMS.CoreDbContext.Entities
         public string? Description { get; set; }
 
         // Navigation property for the dependent entity
-        public ICollection<BatchDetail> BatchDetails { get; set; }
+        public ICollection<Batch> Batches { get; set; }
     }
 }
