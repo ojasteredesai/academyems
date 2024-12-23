@@ -29,11 +29,13 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<ICourseTypeRepository, CourseTypeRepository>();
 builder.Services.AddTransient<IUserTypeRepository, UserTypeRepository>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IBatchRepository, BatchRepository>();
 builder.Services.AddTransient<ICourseRepository, CourseRepository>();
 builder.Services.AddTransient<ICourseTypeService, CourseTypeService>();
 builder.Services.AddTransient<IUserTypeService, UserTypeService>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ICourseService, CourseService>();
+builder.Services.AddTransient<IBatchService, BatchService>();
 
 var app = builder.Build();
 

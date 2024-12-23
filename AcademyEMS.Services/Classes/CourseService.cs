@@ -38,5 +38,14 @@ namespace AcademyEMS.Services
                 Success = true
             };
         }
+
+        public CourseResponse GetCourseByType(int id)
+        {
+            return new CourseResponse
+            {
+                Courses = _courseRepository.GetByCourseType(id),
+                Success = true
+            };
+        }
     }
 }

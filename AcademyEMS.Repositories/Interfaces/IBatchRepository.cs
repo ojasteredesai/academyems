@@ -7,7 +7,6 @@ namespace AcademyEMS.Repositories
     {
         List<BatchDTO> GetAll();
         BatchDTO GetByID(int id);
-        List<BatchDTO> GetByBatchId(int courseId);
         List<BatchDTO> GetByBatchStatusID(int id);
         int CreateBatch(Batch request);
         int UpdateBatch(Batch request);

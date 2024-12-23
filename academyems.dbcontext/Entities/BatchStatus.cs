@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AcademyEMS.CoreDbContext.Entities
 {
+    [Table(name: "batch_status")]
     public class BatchStatus : BaseEntity
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]

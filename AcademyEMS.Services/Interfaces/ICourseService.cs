@@ -6,5 +6,6 @@ namespace AcademyEMS.Services
     {
         CourseResponse CreateUser(CreateCourseRequest user);
         CourseResponse GetAll();
+        CourseResponse GetCourseByType(int id);
     }
 }

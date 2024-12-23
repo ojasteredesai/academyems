@@ -7,5 +7,7 @@ namespace AcademyEMS.Repositories
     {
         int CreateUser(Course user);
         List<CourseDTO> GetAll();
+        CourseDTO GetByCourseId(int id);
+        List<CourseDTO> GetByCourseType(int id);
     }
 }

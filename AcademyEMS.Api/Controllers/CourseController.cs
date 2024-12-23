@@ -1,6 +1,7 @@
 ﻿using AcademyEMS.Data.DTO;
 using AcademyEMS.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace AcademyEMS.Api.Controllers
 {
@@ -22,6 +23,29 @@ namespace AcademyEMS.Api.Controllers
             try
             {
                 response = _courseService.GetAll();
+            }
+            catch (Exception ex)
+            {
+                response = new CourseResponse
+                {
+                    Error = ex.Message,
+                    Success = false
+                };
+            }
+            finally
+            {
+
+            }
+            return Ok(response);
+        }
+
+        [HttpGet("GetCourseByType")]
+        public IActionResult GetCourseByType(int id)
+        {
+            CourseResponse response;
+            try
+            {
+                response = _courseService.GetCourseByType(id);
             }
             catch (Exception ex)
             {
